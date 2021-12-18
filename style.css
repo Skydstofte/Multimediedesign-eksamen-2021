@@ -1,0 +1,1393 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Dosis', sans-serif;
+  background: rgb(68, 87, 126);
+  color: white;
+  height: 100vh;
+  overflow: hidden;
+  width: 100%;
+  min-width: 300px;
+  overflow-y: scroll;
+  position: relative;
+}
+
+a:link {
+  color: black;
+}
+a:visited {
+  color: black;
+}
+a:hover {
+  color: black;
+}
+a:active {
+  color: black;
+}
+
+/* customizable snowflake styling (made by: Codeconvey - https://codepen.io/codeconvey/pen/xRzQay */
+.snowflake {
+  color: #fff;
+  font-size: 1em;
+  font-family: Arial;
+  text-shadow: 0 0 1px #000;
+}
+
+@-webkit-keyframes snowflakes-fall {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+@-webkit-keyframes snowflakes-shake {
+  0% {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+  50% {
+    -webkit-transform: translateX(80px);
+    transform: translateX(80px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+}
+@keyframes snowflakes-fall {
+  0% {
+    top: -10%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+@keyframes snowflakes-shake {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(80px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+.snowflake {
+  position: fixed;
+  top: -10%;
+  z-index: -2;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+  -webkit-animation-name: snowflakes-fall, snowflakes-shake;
+  -webkit-animation-duration: 10s, 3s;
+  -webkit-animation-timing-function: linear, ease-in-out;
+  -webkit-animation-iteration-count: infinite, infinite;
+  -webkit-animation-play-state: running, running;
+  animation-name: snowflakes-fall, snowflakes-shake;
+  animation-duration: 10s, 3s;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+  animation-play-state: running, running;
+}
+
+.snowflake:nth-of-type(0) {
+  left: 1%;
+  -webkit-animation-delay: 0s, 0s;
+  animation-delay: 0s, 0s;
+}
+
+.snowflake:nth-of-type(1) {
+  left: 10%;
+  -webkit-animation-delay: 1s, 1s;
+  animation-delay: 1s, 1s;
+}
+
+.snowflake:nth-of-type(2) {
+  left: 20%;
+  -webkit-animation-delay: 6s, 0.5s;
+  animation-delay: 6s, 0.5s;
+}
+
+.snowflake:nth-of-type(3) {
+  left: 30%;
+  -webkit-animation-delay: 4s, 2s;
+  animation-delay: 4s, 2s;
+}
+
+.snowflake:nth-of-type(4) {
+  left: 40%;
+  -webkit-animation-delay: 2s, 2s;
+  animation-delay: 2s, 2s;
+}
+
+.snowflake:nth-of-type(5) {
+  left: 50%;
+  -webkit-animation-delay: 8s, 3s;
+  animation-delay: 8s, 3s;
+}
+
+.snowflake:nth-of-type(6) {
+  left: 60%;
+  -webkit-animation-delay: 6s, 2s;
+  animation-delay: 6s, 2s;
+}
+
+.snowflake:nth-of-type(7) {
+  left: 70%;
+  -webkit-animation-delay: 2.5s, 1s;
+  animation-delay: 2.5s, 1s;
+}
+
+.snowflake:nth-of-type(8) {
+  left: 80%;
+  -webkit-animation-delay: 1s, 0s;
+  animation-delay: 1s, 0s;
+}
+
+.snowflake:nth-of-type(9) {
+  left: 90%;
+  -webkit-animation-delay: 3s, 1.5s;
+  animation-delay: 3s, 1.5s;
+}
+/* snowflake styling end */
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  min-width: 300px;
+  margin: auto;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+  background: rgba(49, 64, 92, 0.95);
+}
+
+.header a img {
+  height: 6rem;
+  z-index: 2;
+  top: 0;
+  margin: 0 0 0 20px;
+}
+
+.header a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.header ul {
+  list-style: none;
+}
+
+.menu-btn {
+  cursor: pointer;
+  width: 60px;
+  margin-right: 20px;
+}
+
+.menu-btn img {
+  width: 100%;
+}
+
+.header .menu-items {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  right: 0;
+  background: #2d3a53;
+  display: block;
+  line-height: 3rem;
+  transform: translateY(-100vh);
+  transition: transform 0.6s ease-out;
+  z-index: -2;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding-top: 90px;
+}
+
+.menu-items.open {
+  transform: translateY(0);
+}
+
+.menu-items li {
+  margin: 15px 5px;
+}
+
+.menu-items li a {
+  padding: 0 1rem;
+  display: block;
+  font-size: 1.4rem;
+}
+
+.menu-items li a i {
+  font-size: 14px;
+}
+
+.menu-items li:hover {
+  background: rgba(255, 0, 20, 0.8);
+  border-radius: 8px;
+}
+
+/* DROPDOWN */
+.menu-items .dropdown-menu {
+  position: static;
+  opacity: 1;
+  top: 4rem;
+  visibility: visible;
+  padding-left: 1rem;
+  width: 100%;
+  max-height: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.expand-btn.open + .expandable {
+  max-height: 100%;
+  transform: scaleY(1);
+}
+
+.expandable li {
+  margin: 0;
+}
+
+.expandable li a {
+  font-size: 1rem;
+}
+
+/* ########### menu styling end ################ */
+
+main {
+  width: 100%;
+  margin: 200px auto 0;
+  position: relative;
+  font-family: 'Dosis', sans-serif;
+}
+
+/* Frontpage styling */
+.frontpage-section-one {
+  border-radius: 8px;
+  background: rgba(255, 192, 19, 0.85);
+  padding: 10px;
+  width: 80%;
+  margin: 0 auto 30px;
+  box-shadow: 10px 10px 8px rgb(49, 64, 92);
+}
+
+.frontpage-section-one h1 {
+  font-family: 'Dancing Script', sans-serif;
+  font-size: 40px;
+  font-weight: lighter;
+  letter-spacing: 3px;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.heart-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px 0;
+}
+
+.frontpage-section-one i {
+  color: #ff0014;
+  font-size: 24px;
+}
+
+.frontpage-section-one h2 {
+  font-size: 26px;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.frontpage-section-two {
+  border-radius: 8px;
+  background: rgba(49, 64, 92, 0.85);
+  padding: 10px;
+  width: 80%;
+  margin: 0 auto;
+  box-shadow: 10px 10px 8px rgb(49, 64, 92);
+}
+
+.frontpage-section-two a {
+  color: white;
+  text-decoration: none;
+}
+
+.frontpage-section-two h2 {
+  font-size: 28px;
+  text-align: center;
+  padding: 10px 20px;
+}
+
+.frontpage-section-two-img {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.frontpage-section-two img {
+  width: 95%;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+/* frontpage slider */
+
+.recipes-slider-container {
+  width: 80%;
+  margin: 20px auto;
+  background: rgba(49, 64, 92, 0.85);
+  box-shadow: 10px 10px 8px rgb(49, 64, 92);
+  border-radius: 8px;
+}
+
+.slider-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.recipes-slider-img {
+  width: 90%;
+  border-radius: 8px;
+  margin: 20px;
+}
+
+.button {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+.button-left {
+  border: none;
+  font-size: 30px;
+  color: white;
+  padding: 8px 16px;
+  background-color: inherit;
+  cursor: pointer;
+  height: 100%;
+}
+
+.button-right {
+  border: none;
+  font-size: 30px;
+  color: white;
+  padding: 8px 16px;
+  background-color: inherit;
+  cursor: pointer;
+  height: 100%;
+}
+
+/* frontpage styling end */
+
+/* "de søde" styling */
+
+.desøde-container {
+  display: block;
+  width: 100%;
+  margin: 30px auto 0;
+}
+
+.kagerulle-tekst-container {
+  width: 100%;
+  position: relative;
+  text-align: center;
+}
+
+.kagerulle-tekst-container img {
+  width: 300px;
+  position: relative;
+}
+
+.kagerulle-tekst-container h1 {
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Dancing Script', sans-serif;
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.desøde-container p {
+  font-size: 22px;
+  margin: 40px auto 0;
+  width: 80%;
+}
+
+.heart-container {
+  padding-bottom: 10px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.cards-container-card {
+  border: 9px solid white;
+  border-style: double;
+  border-radius: 8px;
+  background: rgba(255, 205, 69, 0.85);
+  width: 250px;
+  height: 320px;
+  margin: 10px auto 0;
+  box-shadow: 10px 10px 8px rgb(49, 64, 92);
+}
+
+.cards-container-card h2 {
+  text-align: center;
+  text-decoration: underline;
+  margin: 20px 0;
+  color: white;
+}
+
+.card-img {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.cards-container-card img {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+}
+
+#heart-border {
+  width: 300px;
+  margin: 0 auto 30px;
+  border-bottom: 2px solid rgb(255, 255, 255);
+}
+
+.loadmore-button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.loadmore-button a {
+  text-align: center;
+  text-decoration: none;
+  font-weight: bolder;
+  font-size: 20px;
+  border: 3px solid rgb(48, 48, 48);
+  border-radius: 8px;
+  background: white;
+  padding: 5px 10px;
+}
+
+/* "de søde" styling end */
+
+/* "peberkagehuset" styling */
+.peberkagehus-container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.peberkagehus-section-one h1 {
+  text-align: center;
+  font-family: 'Dancing Script', sans-serif;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.peberkagehus-section-one p {
+  font-size: 20px;
+  background: rgba(49, 64, 92, 0.85);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 10px 10px 8px rgb(49, 64, 92);
+  margin: 40px 0;
+}
+
+.peberkagehus-section-one-img {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.peberkagehus-section-one-img img {
+  width: 90%;
+  border-radius: 8px;
+  box-shadow: 10px 10px 8px rgb(49, 64, 92);
+}
+
+.peberkagehus-container h2 {
+  font-size: 24px;
+  margin: 30px auto 20px;
+}
+
+.peberkagehus-container h3 {
+  font-size: 22px;
+  margin-top: 0;
+}
+
+.ingrediens-container {
+  margin-bottom: 20px;
+  background: rgba(49, 64, 92, 0.85);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 10px 10px 8px rgb(49, 64, 92);
+}
+
+.peberkagehus-container ul li {
+  list-style: none;
+  font-size: 20px;
+}
+
+.peberkagehus-section-two img {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+}
+
+.howto-guide-container {
+  background: rgba(49, 64, 92, 0.85);
+  border-radius: 8px;
+  box-shadow: 10px 10px 8px rgb(49, 64, 92);
+}
+
+.peberkagehus-section-three p {
+  font-size: 20px;
+  padding: 20px;
+}
+
+.howto-guide-container {
+  margin: 40px 0;
+}
+
+.peberkagehus-howto-img {
+  display: flex;
+  justify-content: center;
+}
+
+.peberkagehus-howto-img img {
+  width: 90%;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 10px 10px 8px rgb(49, 64, 92);
+}
+
+.peberkagehus-section-three h3 {
+  margin-top: 20px;
+}
+
+.peberkagehus-section-three p {
+  margin-top: 20px;
+}
+
+.peberkagehus-section-three p a {
+  color: white;
+}
+
+.peberkagehus-lastcontainer {
+  background: rgba(49, 64, 92, 0.85);
+  border-radius: 8px;
+  box-shadow: 10px 10px 8px rgb(49, 64, 92);
+}
+
+#peberkagehus-lastcontainer-h3 {
+  text-align: left;
+  padding: 20px 0 0 20px;
+}
+
+.peberkagehus-lastcontainer p {
+  background: none;
+  padding-bottom: 0;
+}
+
+.peberkagehus-lastcontainer ul {
+  padding-bottom: 20px;
+}
+
+.peberkagehus-lastcontainer li {
+  padding-left: 20px;
+}
+
+/* "peberkagehuset" styling end */
+
+/* "julebageskolen" styling */
+.bageskole-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto 10px;
+  width: 80%;
+}
+
+.bageskole-container-one {
+  background: rgb(255, 192, 19, 0.85);
+  box-shadow: 10px 10px 8px rgb(49, 64, 92);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.bageskole-container h1,
+h2,
+h3,
+p ul {
+  margin: 10px auto;
+}
+
+.bageskole-container h1,
+.bageskole-container-two h2 {
+  font-family: 'Dancing Script', sans-serif;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.bageskole-container h2 {
+  font-size: 28px;
+  text-align: center;
+}
+
+.bageskole-container h3,
+.bageskole-container-two h3 {
+  font-size: 24px;
+  margin-left: 0;
+  width: 80%;
+}
+
+.bageskole-container li {
+  list-style-type: none;
+  margin: 10px 0;
+  font-size: 20px;
+}
+
+.bageskole-container p {
+  font-size: 20px;
+  margin: 0 auto;
+}
+
+.bageskole-img-container {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto 15px;
+}
+
+.bageskole-container-two {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.bageskole-flexbox-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.star-tekst-container {
+  width: 200px;
+  position: relative;
+  text-align: center;
+  margin: 0  auto;
+}
+
+.star-tekst-container img {
+  width: 200px;
+  position: relative;
+}
+
+.star-tekst-container h1 {
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Dancing Script', sans-serif;
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: rgb(28, 39, 58);
+}
+
+.bageskole-img-container img {
+  height: 250px;
+}
+
+#kagemand {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 30px;
+}
+
+#kagemand img {
+  height: 100px;
+}
+
+.bageskole-container-two p {
+  margin: 0 auto 20px;
+  font-size: 20px;
+}
+
+.bageskole-container-two li {
+  list-style: none;
+  margin: 0 auto;
+  font-size: 20px;
+}
+
+.bageskole-container-two-greetings h2 {
+  text-align: center;
+}
+
+.bagerne-img {
+  display: flex;
+  justify-content: center;
+}
+
+.bagerne-img img {
+  width: 100%;
+  border-radius: 8px;
+  background-color: rgb(45, 58, 83, 0.85);
+  margin: 10px 0 30px;
+  box-shadow: 10px 10px 8px rgb(49, 64, 92);
+}
+
+.city-contaier {
+  margin-top: 0px;
+}
+
+#city {
+  background: #cedfff;
+  border-radius: 4px;
+  font-family: 'Dosis', sans-serif;
+}
+
+.date-contaier {
+  margin: 20px 0;
+}
+
+[type='date'] {
+  background: #cedfff
+    url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)
+    97% 50% no-repeat;
+  border-radius: 4px;
+  font-family: 'Dosis', sans-serif;
+}
+
+[type='date']::-webkit-inner-spin-button {
+  display: none;
+}
+
+[type='date']::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+#myBtn {
+  padding: 10px;
+  font-family: 'Dosis', sans-serif;
+  font-size: 16px;
+  font-weight: bolder;
+  background-color: #44577e;
+  color: white;
+  border-radius: 4px;
+}
+
+/* "julebageskolen" styling end */
+
+/* "om os" styling */
+.omos-content {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.omos-content h2 {
+  font-family: 'Dancing Script', sans-serif;
+  text-align: center;
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.omos-content p {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.omos-content a {
+  color: white;
+}
+
+.omos-contact {
+  font-family: 'Dancing Script', sans-serif;
+  text-align: center;
+  font-size: 38px;
+  margin-bottom: 20px;
+  width: 80%;
+}
+
+.omos-contact-text {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  margin: 30px 30px;
+}
+
+.omos-contact-container {
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 5px;
+  background-color: rgb(255, 192, 19, 0.85);
+  box-shadow: 10px 10px 8px rgb(49, 64, 92);
+  padding: 20px;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+input[type='text'],
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #44577e;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  font-family: 'Dosis', sans-serif;
+  font-size: 16px;
+  font-weight: bolder;
+  background-color: #cedfff;
+}
+
+#send {
+  background-color: #ff0014;
+  color: white;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Dosis', sans-serif;
+  font-size: 16px;
+  font-weight: bolder;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+input[type='send']:hover {
+  background-color: #c90011;
+}
+
+/* "om os" styling end */
+
+/* footer */
+
+.footer {
+  width: 100%;
+  position: relative;
+  left: 0;
+  bottom: 0%;
+  /* top: 100%; */
+  display: block;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.footer-img img {
+  height: 100px;
+  margin: 30px 0 -5px;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  margin-bottom: 0;
+}
+
+.footer-title {
+  font-size: 30px;
+  font-family: 'Dancing Script', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  text-align: center;
+  color: #000;
+  padding: 10px;
+}
+
+footer address {
+  max-width: 100%;
+  margin: 10px 0;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: left;
+  color: #000;
+}
+
+footer address a {
+  text-decoration: none;
+}
+
+.footer-container address ul {
+  margin-bottom: 20px;
+}
+
+.footer-container address ul li {
+  list-style-type: none;
+}
+
+/* empty page */
+.empty-page {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.empty-page h1 {
+  font-family: 'Dancing Script';
+  font-size: 30px;
+  text-align: center;
+  margin: 180px auto 40px;
+}
+
+.empty-page img {
+  width: 100%;
+  display: block;
+}
+/* empty page end */
+
+/* ############ Media ############## */
+@media screen and (min-width: 500px) {
+  /* empty page */
+  .empty-page h1 {
+    font-size: 7vw;
+  }
+
+  /* frontpage */
+  .frontpage-section-one {
+    width: 430px;
+  }
+
+  .heart-container {
+    justify-content: center;
+  }
+
+  .frontpage-section-one i {
+    font-size: 36px;
+    padding: 0 3px;
+  }
+
+  .frontpage-section-two {
+    width: 385px;
+    height: 480px;
+    margin: 50px auto;
+  }
+
+  .recipes-slider-container {
+    width: 385px;
+    height: 480px;
+    margin: 0 auto;
+  }
+
+  .slider-div {
+    width: 100%;
+  }
+
+  /* De søde */
+  .kagerulle-tekst-container img {
+    width: 450px;
+  }
+
+  .kagerulle-tekst-container h1 {
+    font-size: 70px;
+  }
+
+  .desøde-container p {
+    width: 450px;
+  }
+
+  .heart-container {
+    width: 300px;
+  }
+
+  /* peberkagehus styling */
+  .peberkagehus-container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .peberkagehus-container h1 {
+    text-align: center;
+    font-family: 'Dancing Script', sans-serif;
+    font-size: 60px;
+    margin-bottom: 20px;
+  }
+
+  .peberkagehus-section-one p {
+    font-size: 20px;
+  }
+
+  .peberkagehus-section-one-img {
+    margin: 0 auto;
+    width: 80%;
+  }
+
+  .peberkagehus-section-one-img img {
+    width: 350px;
+    border-radius: 8px;
+  }
+
+  .peberkagehus-container h3 {
+    font-size: 24px;
+  }
+
+  .peberkagehus-section-two img {
+    width: 350px;
+  }
+
+  .peberkagehus-section-three h3 {
+    font-size: 24px;
+  }
+
+  .peberkagehus-section-three p {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+
+  .howto-container img {
+    width: 90%;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+
+  .peberkagehus-container ul li {
+    list-style-type: none;
+    font-size: 20px;
+  }
+
+  /* Julebageskolen */
+  .bageskole-container-one h1 {
+    font-size: 60px;
+  }
+
+  #julebageskole-heart-container {
+    justify-content: space-between;
+    width: 75%;
+  }
+
+  .bageskole-flexbox-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  #kagemand img {
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 720px) {
+
+  .header a img {
+    height: 6rem;
+  }
+
+  .menu-btn img {
+    display: none;
+  }
+
+  .header .menu-items {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 45px;
+    padding: 0;
+    background: none;
+    margin-right: 15px;
+    transform: none;
+  }
+
+  .menu-items li a {
+    padding: 0 5px;
+    font-size: 20px;
+  }
+
+  .menu-items li:hover {
+    background: rgba(255, 0, 20, 0.8);
+    border-radius: 8px;
+  }
+
+  .header ul li .dropdown-menu {
+    padding: 0 3px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
+  /* frontpage */
+  .frontpage-section-one {
+    width: 70%;
+  }
+
+  .frontpage-section-one h1 {
+    font-size: 70px;
+  }
+
+  .frontpage-section-one i {
+    font-size: 40px;
+    min-width: 50px;
+  }
+
+  .frontpage-section-one h2 {
+    font-size: 30px;
+  }
+
+  .frontpage-section-two h2 {
+    font-size: 40px;
+  }
+
+  /* De søde */
+  .cards-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .cards-container-card {
+    margin: 30px 15px 30px;
+    width: 250px;
+  }
+
+  /* Peberkagehuset */
+  .peberkagehus-section-one-img {
+    width: 65%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .peberkagehus-section-one-img img {
+    width: 100%;
+  }
+
+  .peberkagehus-section-two {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  #ingredients {
+    height: 489px;
+  }
+
+  #ingredients img {
+    height: 100%;
+    width: auto;
+  }
+
+  /* Bageskolen */
+  .flex-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .star-tekst-container {
+    width: 40%;
+    position: relative;
+    text-align: center;
+    margin: 0  auto;
+  }
+  
+  .star-tekst-container img {
+    width: 100%;
+    position: relative;
+  }
+  
+  .star-tekst-container h1 {
+    font-size: 5vw;
+  }
+
+  #kagemand {
+    overflow: visible;
+  }
+
+  #luciabrød {
+    transform: none;
+    width: 140px;
+  }
+
+  .flex-container-two {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Om Os */
+  .omos-content {
+    width: 600px;
+  }
+
+  /* Footer */
+
+  .footer-container address ul {
+    display: flex;
+  }
+
+  .footer-container address ul li {
+    list-style-type: none;
+    margin: 0 10px;
+  }
+
+  /* Julebageskolen */
+  #julebageskole-heart-container {
+    justify-content: space-between;
+    width: 400px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  /* frontpage */
+  .frontpage-section-one {
+    width: 630px;
+  }
+
+  .frontpage-flexbox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width: 80%;
+  }
+
+  /* De søde */
+  #heart-border {
+    width: 520px;
+  }
+
+  /* Peberkagehuset */
+  .peberkagehus-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .peberkagehus-container img {
+    width: 500px;
+    margin-right: 20px;
+  }
+
+  .peberkagehus-section-one p {
+    width: 700px;
+    margin: 30px auto;
+  }
+  .peberkagehus-section-three h3 {
+    text-align: center;
+  }
+
+  .howto-guide-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .howto-guide-container p {
+    width: 40%;
+  }
+
+  #no-img-container p {
+    width: 100%;
+  }
+
+  /* Bageskolen */
+  .bageskole-container-one {
+    width: 704px;
+    margin: 0 auto 30px;
+  }
+
+  .star-tekst-container h1 {
+    font-size: 50px;
+  }
+
+  #kagemand {
+    overflow: visible;
+  }
+
+  #kagemand img {
+    height: 200px;
+  }
+
+  .bageskole-container,
+  .bageskole-container-two {
+    width: 800px;
+  }
+
+  .bagerne-img img {
+    width: 700px;
+  }
+
+  /* "om os" styling */
+  .omos-contact-container {
+    width: 700px;
+  }
+
+  .footer-img img {
+    height: auto;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  /* frontpage */
+  .frontpage-flexbox {
+    width: 900px;
+  }
+
+  /* De søde */
+  .cards-container {
+    width: 90%;
+  }
+
+  .cards-container-flexbox {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .cards-container-card {
+    width: 250px;
+  }
+
+  /* peberkagehuset */
+  .peberkagehus-container {
+    width: 900px;
+  }
+}
